@@ -72,7 +72,7 @@
         #leftArtMenu>div>div>div{background-color: rgba(129, 129, 129,0.8); width: 100%; height: 100%; border-radius: 12px; position: absolute; display: flex; justify-content: center; align-items: center; font-size: 25px; color: white;}
 
         /* 내용 오른쪽 */
-        #rightArt{width: 38vw;}
+        #rightArt{width: 38vw; position: relative;}
         #rightArt p{margin-left: 5vw;}
         #rightArt>div:nth-child(1){margin-left: 100vw; width: 70vw; height: 5.9vw; background-color: #8A94FF; border-radius: 70px; color: white; display: flex; flex-direction: column; justify-content: center;}
         #rightArt>div:nth-child(1) p:nth-child(1){font-size: 1.82vw; font-family: 'GmarketSansBold';}
@@ -87,9 +87,14 @@
         #rightArt>div:nth-child(3)>p>span{font-family: 'GmarketSansBold';}
         #rightArt>div:nth-child(3)>div{height: 7.6vw; display: flex; flex-direction: column; justify-content: space-between;}
         #rightArt>div:nth-child(3)>div>p>span{font-family: 'GmarketSansLight'; font-size: 0.8vw;}
-        #rightArt>div:nth-child(4){margin: 1vw 0 0 5vw; width: 80%; height: 3vw; border: #8A94FF 1px solid; border-radius: 35px; display: flex; justify-content: space-around; align-items: center;}
+        #rightArt>div:nth-child(4){margin: 1vw 0 0 24vw; width: 30%; height: 3vw; border: #8A94FF 1px solid; border-radius: 35px; display: flex; justify-content: space-evenly; align-items: center; overflow: hidden; position: relative;}
         #rightArt>div:nth-child(4)>p{margin: 0; margin-top: 0.2vw; font-size: 1.3vw; color: #8A94FF; font-family: 'GmarketSansBold';}
         #rightArt>div:nth-child(4)>img{width: 1.7vw;}
+        #rightArt>div:nth-child(4)>div{width: 100%; height: 30%; position: absolute; display: none; z-index:3;}
+        #rightArt>div:nth-child(4)>div>div{height: 100%; display: flex; justify-content: space-evenly; align-items: center;}
+        #rightArt>div:nth-child(4)>div>div>p{margin: 0; margin-top: 0.2vw; font-size: 1.3vw; color: white; font-family: 'GmarketSansBold';}
+        #rightArt>div:nth-child(4)>div>div>img{width: 1.7vw;}
+        #rightArt>div:nth-child(5){margin: 1vw 0 0 24vw; width: 0%; height: 3vw; background-color: #8A94FF; border: #8A94FF 1px solid; border-radius: 35px; position: absolute; bottom: 0; z-index: -5; display: none;}
 
         /* footer */
         footer{height: 14vh; padding-left: 95px; background-color: #8A94FF; display: flex; flex-direction: column; justify-content: center; color: white;}
@@ -104,7 +109,17 @@
     <script>
         $(function(){
             $("#rightArt>div:nth-child(1)").animate({"margin-left":"0"},850);
-                
+            $("#rightArt>div:nth-child(4)").mouseover(function(){
+                $("#rightArt>div:nth-child(5)").stop().show();
+                $("#rightArt>div:nth-child(5)").stop().animate({"width":"30%"});
+                $("#rightArt>div:nth-child(4)>div").stop().fadeIn();
+            })
+            $("#rightArt>div:nth-child(4)").mouseout(function(){
+                $("#rightArt>div:nth-child(4)>div").stop().fadeOut();
+                $("#rightArt>div:nth-child(5)").stop().animate({"width":"0%"},function(){
+                    $("#rightArt>div:nth-child(5)").stop().hide();
+                });
+            })
         })
     </script>
 </head>
@@ -172,11 +187,16 @@
                     </div>
                 </div>
                 <div>
-                    <!-- <span>리뷰쓰기</span>
-                    <span>></span> -->
                     <p>리뷰쓰기</p>
                     <img src="img/pencil.png">
+                    <div>
+                        <div>
+                            <p>리뷰쓰기</p>
+                            <img src="img/pencilWhite.png">
+                        </div>
+                    </div>
                 </div>
+                <div></div>
             </div>
         </article>
     </section>
