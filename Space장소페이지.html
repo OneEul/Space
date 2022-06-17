@@ -94,14 +94,15 @@
         #rightArt>div:nth-child(4)>div>div{height: 100%; display: flex; justify-content: space-evenly; align-items: center;}
         #rightArt>div:nth-child(4)>div>div>p{margin: 0; margin-top: 0.2vw; font-size: 1.3vw; color: white; font-family: 'GmarketSansBold';}
         #rightArt>div:nth-child(4)>div>div>img{width: 1.7vw;}
-        #rightArt>div:nth-child(5){margin: 1vw 0 0 24vw; width: 0%; height: 3vw; background-color: #8A94FF; border: #8A94FF 1px solid; border-radius: 35px; position: absolute; bottom: 0; z-index: -5; display: none;}
+        #rightArt>div:nth-child(5){margin: 1vw 0 0 23.9vw; width: 100%; height: 3.1vw; border: rgba(255, 255, 255,0.1) 1px solid; border-radius: 35px; position: absolute; bottom: -0.04vw; left: -0.03vw; z-index: -5; overflow: hidden;}
+        #rightArt>div:nth-child(5)>div{width:30.3%; height: 3vw; position: absolute; bottom: -0.02vw; background-color: #8A94FF; border: #8A94FF 1px solid; border-radius: 35px; margin-left: -20vw;}
 
         /* footer */
         footer{height: 14vh; padding-left: 95px; background-color: #8A94FF; display: flex; flex-direction: column; justify-content: center; color: white;}
         footer p{font-family: 'GmarketSansLight'; font-size: 12px;}
         footer div{margin-bottom: 10px;}
         footer div p{font-family: 'GmarketSansBold'; font-size: 25px;}
-        footer div p:nth-child(2){font-size: 15px;}        
+        footer div p:nth-child(2){font-size: 15px;}
 
     </style>
     <script src="js/jquery-3.6.0.min.js"></script>
@@ -110,15 +111,12 @@
         $(function(){
             $("#rightArt>div:nth-child(1)").animate({"margin-left":"0"},850);
             $("#rightArt>div:nth-child(4)").mouseover(function(){
-                $("#rightArt>div:nth-child(5)").stop().show();
-                $("#rightArt>div:nth-child(5)").stop().animate({"width":"30%"});
+                $("#rightArt>div:nth-child(5)>div").stop().animate({"margin-left":"0"});
                 $("#rightArt>div:nth-child(4)>div").stop().fadeIn();
             })
             $("#rightArt>div:nth-child(4)").mouseout(function(){
                 $("#rightArt>div:nth-child(4)>div").stop().fadeOut();
-                $("#rightArt>div:nth-child(5)").stop().animate({"width":"0%"},function(){
-                    $("#rightArt>div:nth-child(5)").stop().hide();
-                });
+                $("#rightArt>div:nth-child(5)>div").stop().animate({"margin-left":"-20vw"});
             })
         })
     </script>
@@ -196,7 +194,9 @@
                         </div>
                     </div>
                 </div>
-                <div></div>
+                <div>
+                    <div></div>
+                </div>
             </div>
         </article>
     </section>
